@@ -10,9 +10,9 @@ pipeline{
                 expression{
                     return env.A == "lokesh"
                 }
-                steps{
-                    echo "okay, this is working"
-                }
+            }
+            steps{
+                echo "okay, this is working"
             }
         }
     }

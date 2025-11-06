@@ -1,18 +1,23 @@
 pipeline{
     agent any
     parameters{
-        string(name: 'user', defaultValue: 'lokesh', description: 'Enter your name here: ')
+        choice(name: 'Env', choices: ['dev', 'test', 'prod'], description: 'select one env here: ')
     }
     stages{
-        stage('para'){
+        stage('select'){
             when{
                 expression{
-                    return params.user == 'lokesh'
+                    return params.Env == 'dev'
                 }
             }
             steps{
-                sh 'mkdir lokesh'
-                sh 'cd lokesh'
+                script{
+                    if(params.Env == 'test'){
+                        echo "condition is satify"
+                    } else{
+                        error("its error block")
+                    }
+                }
             }
         }
     }

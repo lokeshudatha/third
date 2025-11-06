@@ -1,18 +1,18 @@
 pipeline{
     agent any
-    environment{
-        A = "lokesh"
-        B = "udatha"
+    parameters{
+        string(name: 'user', defaultValue: 'lokesh', description: 'Enter your name here: ')
     }
     stages{
-        stage('build'){
+        stage('para'){
             when{
                 expression{
-                    return env.A == "lokesh"
+                    return params.user == 'lokesh'
                 }
             }
             steps{
-                echo "okay, this is working"
+                sh 'mkdir lokesh'
+                sh 'cd lokesh'
             }
         }
     }

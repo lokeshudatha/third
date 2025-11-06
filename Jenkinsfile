@@ -5,7 +5,7 @@ pipeline{
         B = "udatha"
     }
     stages{
-        stage('String'){
+        stage('build'){
             when{
                 expression{
                     return env.A == "lokesh"
